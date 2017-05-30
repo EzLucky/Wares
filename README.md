@@ -1,4 +1,4 @@
-#Wares
+# Wares
 
 Wares, basé sur le projet [Ares] (https://github.com/sweetsoftware/Ares), est un botnet codé en Python (version 2.7) sous le modèle d’une API RESTful.
 
@@ -19,9 +19,9 @@ Le client est un programme Python dépendant d’un certain nombre de librairies
 
 Le tracker GPS : TODO HowTo + code
 
-##Installation
+## Installation
 
-###Serveur
+### Serveur
 
 Pour commencer, il faut installer le package python **cherrypy**.
 
@@ -39,7 +39,7 @@ python server.py
 
 Par défaut, le serveur écoute sur [http://localhost:8080] (http://localhost:8080). Pour le modifier il faut éditer server/conf/server.conf.
 
-###Agent
+### Agent
 
 L’agent peut être lancé comme script python, mais son but final est d’être compilé comme exécutable.
 Premièrement, installer toutes les dépendances python :
@@ -64,7 +64,7 @@ cd agent/python
 C:/path/to/pyinstaller --onefile --noconsole agent.py
 ```
 
-###Tracker
+### Tracker
 
 TODO HowTo
 
