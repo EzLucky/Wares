@@ -1,6 +1,6 @@
 # Wares
 
-Wares, basé sur le projet [Ares] (https://github.com/sweetsoftware/Ares), est un botnet codé en Python (version 2.7) sous le modèle d’une API RESTful.
+Wares, basé sur le projet [Ares](https://github.com/sweetsoftware/Ares), est un botnet codé en Python (version 2.7) sous le modèle d’une API RESTful.
 
 Wares est compose de trois programmes:
 * Un **serveur Command aNd Control**, qui est une interface Web permettant d’administrer les agents
@@ -37,7 +37,7 @@ Pour **lancer le serveur**, il ne reste plus qu’à rentrer la commande :
 python server.py
 ```
 
-Par défaut, le serveur écoute sur [http://localhost:8080] (http://localhost:8080). Pour le modifier il faut éditer server/conf/server.conf.
+Par défaut, le serveur écoute sur [http://localhost:8080](http://localhost:8080). Pour le modifier il faut éditer server/conf/server.conf.
 
 ### Agent
 
@@ -58,7 +58,7 @@ Ensuite, configurer agent/settings.py :
 * PAUSE_AT_START = délai avant de contacter le CNC au lancement (en secondes)
 * AUTO_PERSIST = activer la persistance par défaut ?
 
-Finalement, utiliser [PyInstaller] (https://github.com/pyinstaller/pyinstaller) pour compiler l’agent en un unique fichier exécutable :
+Finalement, utiliser [PyInstaller](https://github.com/pyinstaller/pyinstaller) pour compiler l’agent en un unique fichier exécutable :
 ```
 cd agent/python
 C:/path/to/pyinstaller --onefile --noconsole agent.py
