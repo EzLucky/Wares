@@ -4,7 +4,7 @@
 
 Wares, basé sur le projet [Ares](https://github.com/sweetsoftware/Ares), est un botnet codé en Python (version 2.7) sous le modèle d’une API RESTful.
 
-Wares est composé de trois programmes:
+Wares est composé de trois programmes :
 * Un **serveur Command aNd Control**, qui est une interface Web permettant d’administrer les agents
 * Un **programme agent**, qui est lancé sur l’hôte compromis, et assure la communication avec le CNC pour récupérer les commandes à exécuter, et retourner leurs résultats. Trois agents sont disponibles pour les différents OS : Windows, Unix (#TODO), OSX (#TODO)
 * Un **traceur GPS** fonctionnant sur Arduino, envoyant au CNC les données de géolocalisation récoltées
@@ -19,8 +19,8 @@ Le client est un programme Python dépendant d’un certain nombre de librairies
 * keylogger
 * photo via webcam
 
-Le traceur GPS est un dispositif collectant des données de géolocalisation (latitude, longitude, heure du relevé).
-Réalisé avec une Arduino UNO, un shield Adafruit FONA 808 v2, une antenne GPS passive uFl 15*15mm, une antenne gsm uFl et une batterie 1100mAh.
+Le traceur GPS est un dispositif collectant des données de géolocalisation (latitude, longitude, heure du relevé).  
+Réalisé avec une Arduino UNO, un shield Adafruit FONA 808 v2, une antenne GPS passive uFl 15*15mm, une antenne gsm uFl et une batterie 1100mAh.  
 Il est possible de réaliser certaines actions grâce à l’envoi d’un sms particulier via le téléphone autorisé vers la carte sim du traceur : demande d’appel afin de mettre sur écoute la personne tracée, demande de la localisation actuelle, mise à jour du mode de fonctionnement (envoi à la demande des données de localisation sur le téléphone autorisé, et envoi automatique des données de localisation sur le téléphone autorisé) et mise à jour de l’intervalle d’envoi. 
 
 ## Installation
@@ -45,7 +45,7 @@ Par défaut, le serveur écoute sur [http://localhost:8080](http://localhost:808
 
 ### Agent
 
-L’agent peut être lancé comme script python, mais son but final est d’être compilé comme exécutable.
+L’agent peut être lancé comme script python, mais son but final est d’être compilé comme exécutable.  
 Premièrement, **installer** toutes les dépendances python :
 * requests
 * pythoncom
@@ -69,7 +69,7 @@ cd agent/python
 C:/path/to/pyinstaller --onefile --noconsole agent.py
 ```
 
-Pour installer l'agent sur un ordinateur rapidement et discrètement voir project [faux clavier avec Arduino](https://github.com/EzLucky/Arduino_Fake_Keyboard)
+Pour installer l'agent sur un ordinateur rapidement et discrètement voir projet [faux clavier avec Arduino](https://github.com/EzLucky/Arduino_Fake_Keyboard)
 
 ### Traceur
 
