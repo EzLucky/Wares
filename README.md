@@ -42,14 +42,14 @@ Par défaut, le serveur écoute sur [http://localhost:8080](http://localhost:808
 ### Agent
 
 L’agent peut être lancé comme script python, mais son but final est d’être compilé comme exécutable.
-Premièrement, installer toutes les dépendances python :
+Premièrement, **installer** toutes les dépendances python :
 * requests
 * pythoncom
 * pyhook
 * PIL
 * videocapture (http://videocapture.sourceforge.net/)
 
-Ensuite, configurer agent/settings.py :
+Ensuite, **configurer** agent/settings.py :
 * SERVER_URL = URL du serveur http CNC
 * BOT_ID = le nom (unique) du bot, laisser vide pour utiliser le hostname de la machine
 * DEBUG = afficher les messages de debug ? (cas de l’agent en version console) 
@@ -58,9 +58,10 @@ Ensuite, configurer agent/settings.py :
 * PAUSE_AT_START = délai avant de contacter le CNC au lancement (en secondes)
 * AUTO_PERSIST = activer la persistance par défaut ?
 
-Finalement, utiliser [PyInstaller](https://github.com/pyinstaller/pyinstaller) pour compiler l’agent en un unique fichier exécutable :
+Finalement, utiliser [PyInstaller](https://github.com/pyinstaller/pyinstaller) pour **compiler** l’agent en un unique fichier exécutable :
 ```
 cd agent/python
+
 C:/path/to/pyinstaller --onefile --noconsole agent.py
 ```
 
