@@ -69,9 +69,9 @@ cd agent/python
 C:/path/to/pyinstaller --onefile --noconsole agent.py
 ```
 
-Pour installer l'agent sur un ordinateur rapidement et discrètement voir project [faux clavier avec Arduino] (https://github.com/EzLucky/Arduino_Fake_Keyboard)
+Pour installer l'agent sur un ordinateur rapidement et discrètement voir project [faux clavier avec Arduino](https://github.com/EzLucky/Arduino_Fake_Keyboard)
 
 ### Traceur
 
-Voir projet [traceur gps avec Arduino] (https://github.com/EzLucky/Arduino_Gps_Tracker)
+Voir projet [traceur gps avec Arduino](https://github.com/EzLucky/Arduino_Gps_Tracker)
 
