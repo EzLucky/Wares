@@ -1,5 +1,5 @@
 # Wares
-[![](https://img.shields.io/badge/style-python-blue.svg?label=server)](#serveur) [![](https://img.shields.io/badge/style-html-orange.svg?label=server)](#serveur) [![](https://img.shields.io/badge/style-css-4B0082.svg?label=server)](#serveur)   [![](https://img.shields.io/badge/style-python-blue.svg?label=agent)](#agent)   [![](https://img.shields.io/badge/style-arduino-ff69b4.svg?label=tracker)](https://github.com/EzLucky/Arduino_gps_tracker)
+[![](https://img.shields.io/badge/style-python-blue.svg?label=server)](#serveur) [![](https://img.shields.io/badge/style-html-orange.svg?label=server)](#serveur) [![](https://img.shields.io/badge/style-css-4B0082.svg?label=server)](#serveur)   [![](https://img.shields.io/badge/style-python-blue.svg?label=agent)](#agent)   [![](https://img.shields.io/badge/style-arduino-ff69b4.svg?label=tracker)](https://github.com/EzLucky/Arduino_Gps_Tracker)
 
 
 Wares, basé sur le projet [Ares](https://github.com/sweetsoftware/Ares), est un botnet codé en Python (version 2.7) sous le modèle d’une API RESTful.
@@ -19,7 +19,9 @@ Le client est un programme Python dépendant d’un certain nombre de librairies
 * keylogger
 * photo via webcam
 
-Le traceur GPS : TODO HowTo + code
+Le traceur GPS est un dispositif collectant des données de géolocalisation (latitude, longitude, heure du relevé).
+Réalisé avec une Arduino UNO, un shield Adafruit FONA 808 v2, une antenne GPS passive uFl 15*15mm, une antenne gsm uFl et une batterie 1100mAh.
+Il est possible de réaliser certaines actions grâce à l’envoi d’un sms particulier via le téléphone autorisé vers la carte sim du traceur : demande d’appel afin de mettre sur écoute la personne tracée, demande de la localisation actuelle, mise à jour du mode de fonctionnement (envoi à la demande des données de localisation sur le téléphone autorisé, et envoi automatique des données de localisation sur le téléphone autorisé) et mise à jour de l’intervalle d’envoi. 
 
 ## Installation
 
@@ -67,9 +69,9 @@ cd agent/python
 C:/path/to/pyinstaller --onefile --noconsole agent.py
 ```
 
-Pour installer l'agent sur un ordinateur rapidement et discrètement voir : [faux clavier avec Arduino] (https://github.com/pyinstaller/pyinstaller)
+Pour installer l'agent sur un ordinateur rapidement et discrètement voir project [faux clavier avec Arduino] (https://github.com/EzLucky/Arduino_Fake_Keyboard)
 
 ### Traceur
 
-TODO HowTo
+Voir projet [traceur gps avec Arduino] (https://github.com/EzLucky/Arduino_Gps_Tracker)
 
