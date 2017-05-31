@@ -1,3 +1,5 @@
+english version coming soooooooooon
+
 # Wares
 [![](https://img.shields.io/badge/style-python-blue.svg?label=server)](#serveur) [![](https://img.shields.io/badge/style-html-orange.svg?label=server)](#serveur) [![](https://img.shields.io/badge/style-css-4B0082.svg?label=server)](#serveur)   [![](https://img.shields.io/badge/style-python-blue.svg?label=agent)](#agent)   [![](https://img.shields.io/badge/style-arduino-ff69b4.svg?label=tracker)](https://github.com/EzLucky/Arduino_Gps_Tracker)
 
